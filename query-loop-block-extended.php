@@ -27,23 +27,27 @@ add_action( 'enqueue_block_editor_assets', function () {
     );
 } );
 
-add_filter( 'rest_post_collection_params', function( $params ) {
-    if ( isset( $params['orderby'] ) && isset( $params['orderby']['enum'] ) ) {
-        $params['orderby']['enum'][] = 'event_date_asc';
-        $params['orderby']['enum'][] = 'event_date_desc';
-    }
-    return $params;
-} );
+$allowed_post_types = [ 'post', 'page', 'event' ];
 
-add_filter( 'rest_post_query', function( $args, $request ) {
-    if ( isset( $request['orderby'] ) ) {
-        $args['meta_key']  = 'event_date';
-        $args['orderby']   = 'meta_value';
-        $args['meta_type'] = 'DATE';
-        $args['order']     = $request['orderby'] === 'event_date_asc' ? 'ASC' : 'DESC';
-    }
-    return $args;
-}, 10, 2 );
+foreach ( $allowed_post_types as $post_type ) {
+    add_filter( "rest_{$post_type}_collection_params", function( $params ) {
+        if ( isset( $params['orderby'] ) && isset( $params['orderby']['enum'] ) ) {
+            $params['orderby']['enum'][] = 'event_date_asc';
+            $params['orderby']['enum'][] = 'event_date_desc';
+        }
+        return $params;
+    } );
+
+    add_filter( "rest_{$post_type}_query", function( $args, $request ) {
+        if ( isset( $request['orderby'] ) && in_array( $request['orderby'], [ 'event_date_asc', 'event_date_desc' ], true ) ) {
+            $args['meta_key']  = 'event_date';
+            $args['orderby']   = 'meta_value';
+            $args['meta_type'] = 'DATE';
+            $args['order']     = $request['orderby'] === 'event_date_asc' ? 'ASC' : 'DESC';
+        }
+        return $args;
+    }, 10, 2 );
+}
 
 add_filter(
     'pre_render_block',

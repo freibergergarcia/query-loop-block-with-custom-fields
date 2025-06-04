@@ -26,10 +26,27 @@ addFilter(
   (BlockEdit) => (props) => {
     const { name, attributes, setAttributes } = props;
 
-    // Only show for the custom variation
     if (name !== 'core/query' || attributes.namespace !== 'event-date-query') {
       return <BlockEdit {...props} />;
     }
+
+    // Hardcoded post types for demo; you can fetch dynamically if needed
+    const postTypeOptions = [
+      { label: 'Posts', value: 'post' },
+      { label: 'Pages', value: 'page' },
+      { label: 'Event', value: 'event' },
+      // Add more custom post types here if needed
+    ];
+
+    const postType = attributes.query?.postType ?? 'post';
+    const setPostType = (value) => {
+      setAttributes({
+        query: {
+          ...attributes.query,
+          postType: value,
+        },
+      });
+    };
 
     const orderBy = attributes.query?.orderBy ?? '';
     const setOrderBy = (value) => {
@@ -46,6 +63,12 @@ addFilter(
         <BlockEdit {...props} />
         <wp.blockEditor.InspectorControls>
           <wp.components.PanelBody title="Custom Sorting">
+            <wp.components.SelectControl
+              label="Post Type"
+              value={postType}
+              options={postTypeOptions}
+              onChange={setPostType}
+            />
             <wp.components.SelectControl
               label="Order By (Extended)"
               value={orderBy}
