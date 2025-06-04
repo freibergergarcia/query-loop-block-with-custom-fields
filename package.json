@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "start": "wp-scripts start src/query-loop-order.js src/block-variation.js",
-    "build": "wp-scripts build src/query-loop-order.js src/block-variation.js"
+    "start": "wp-scripts start src/query-loop.js",
+    "build": "wp-scripts build src/query-loop.js"
   },
   "devDependencies": {
     "@wordpress/scripts": "^30.17.0"

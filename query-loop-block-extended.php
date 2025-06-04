@@ -20,17 +20,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 add_action( 'enqueue_block_editor_assets', function () {
     wp_enqueue_script(
         'event-date-query-block',
-        plugins_url( 'build/block-variation.js', __FILE__ ),
+        plugins_url( 'build/query-loop.js', __FILE__ ),
         [ 'wp-blocks', 'wp-element', 'wp-editor' ],
-        filemtime( plugin_dir_path( __FILE__ ) . 'build/block-variation.js' ),
-        true
-    );
-
-    wp_enqueue_script(
-        'event-date-query-orderby',
-        plugins_url( 'build/query-loop-order.js', __FILE__ ),
-        [ 'wp-hooks', 'wp-blocks', 'wp-editor' ],
-        filemtime( plugin_dir_path( __FILE__ ) . 'build/query-loop-order.js' ),
+        filemtime( plugin_dir_path( __FILE__ ) . 'build/query-loop.js' ),
         true
     );
 } );
