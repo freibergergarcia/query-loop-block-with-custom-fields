@@ -62,7 +62,7 @@ addFilter(
       <>
         <BlockEdit {...props} />
         <wp.blockEditor.InspectorControls>
-          <wp.components.PanelBody title="Custom Sorting">
+          <wp.components.PanelBody title="Settings for Events by Date">
             <wp.components.SelectControl
               label="Post Type"
               value={postType}
