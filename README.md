@@ -15,6 +15,8 @@ This plugin is a demo, and it will only work if you have custom fields on the po
 Custom field name: `event_date`
 Custom field value format: `20250604`
 
-Post types should be defined:
+<strong>Post types should be manually defined:</strong>
+
 PHP: https://github.com/freibergergarcia/query-loop-block-with-custom-fields/blob/main/query-loop-block-extended.php#L30
+
 JavaScript: https://github.com/freibergergarcia/query-loop-block-with-custom-fields/blob/main/src/query-loop.js#L34-L37
