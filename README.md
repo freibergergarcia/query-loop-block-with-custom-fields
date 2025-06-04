@@ -24,6 +24,9 @@ JavaScript: https://github.com/freibergergarcia/query-loop-block-with-custom-fie
 ## Screenshots
 
 A page with the extended query loop block in action, with the Post Type and Order By options:
+![A page with the extended query loop block in action, with the Post Type and Order By options](screenshots/Events%20by%20Date%20Block%20example.png)
 
+---
 
 A post with the `event_date` custom field set:
+![A post with the `event_date` custom field set](screenshots/Events%20by%20Date%20Block%20Custom%20Field.png)
