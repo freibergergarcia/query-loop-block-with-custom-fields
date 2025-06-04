@@ -20,3 +20,10 @@ Custom field value format: `20250604`
 PHP: https://github.com/freibergergarcia/query-loop-block-with-custom-fields/blob/main/query-loop-block-extended.php#L30
 
 JavaScript: https://github.com/freibergergarcia/query-loop-block-with-custom-fields/blob/main/src/query-loop.js#L34-L37
+
+## Screenshots
+
+A page with the extended query loop block in action, with the Post Type and Order By options:
+
+
+A post with the `event_date` custom field set:
